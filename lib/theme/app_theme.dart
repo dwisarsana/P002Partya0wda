@@ -31,7 +31,7 @@ class AppTheme {
   );
 
   static ThemeData get theme => ThemeData(
-        fontFamily: 'SF Pro Display',
+        fontFamily: 'Roboto',
         scaffoldBackgroundColor: warmSand,
         colorScheme: ColorScheme.fromSeed(
           seedColor: mossGreen,
