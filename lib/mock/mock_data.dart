@@ -109,7 +109,7 @@ class MockData {
     ),
     PartyStyle(
       id: '9',
-      name: 'Art Deco Coffee Lounge',
+      name: 'Art Deco Party Lounge',
       description: 'Glamorous party with geometric patterns, gold brass accents, and velvet booth seating.',
       imagePath: 'assets/images/styles/art_deco_lounge.jpeg',
       category: 'Glamour',
