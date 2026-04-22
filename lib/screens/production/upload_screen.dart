@@ -5,7 +5,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../theme/app_theme.dart';
 import '../../mock/mock_data.dart';
-import '../../models/cafe_style.dart';
+import '../../models/party_style.dart';
 import 'custom_studio_screen.dart';
 
 class UploadScreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class UploadScreen extends StatefulWidget {
 class _UploadScreenState extends State<UploadScreen> {
   final ImagePicker _picker = ImagePicker();
   File? _selectedImage;
-  CafeStyle? _selectedStyle;
+  PartyStyle? _selectedStyle;
 
   Future<void> _pickImage(ImageSource source) async {
     final XFile? image = await _picker.pickImage(

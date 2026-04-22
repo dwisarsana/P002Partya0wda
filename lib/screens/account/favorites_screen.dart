@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import '../../models/cafe_model.dart';
+import '../../models/party_model.dart';
 import '../../services/storage_service.dart';
 import '../../mock/mock_data.dart';
 import '../../widgets/glass_container.dart';
@@ -15,12 +15,12 @@ class FavoritesScreen extends StatefulWidget {
 }
 
 class _FavoritesScreenState extends State<FavoritesScreen> {
-  late Future<List<CafeModel>> _cafesFuture;
+  late Future<List<PartyModel>> _partiesFuture;
 
   @override
   void initState() {
     super.initState();
-    _cafesFuture = context.read<StorageService>().loadCafes();
+    _partiesFuture = context.read<StorageService>().loadParties();
   }
 
   Widget _buildImage(String path) {
@@ -55,8 +55,8 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               ).animate().fadeIn(),
               const SizedBox(height: 20),
               Expanded(
-                child: FutureBuilder<List<CafeModel>>(
-                  future: _cafesFuture,
+                child: FutureBuilder<List<PartyModel>>(
+                  future: _partiesFuture,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
@@ -83,13 +83,13 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                         mainAxisSpacing: 16,
                       ),
                       itemBuilder: (context, index) {
-                        final cafe = favorites[index];
+                        final party = favorites[index];
                         return GlassContainer(
                           padding: EdgeInsets.zero,
                           child: Stack(
                             fit: StackFit.expand,
                             children: [
-                              _buildImage(cafe.resultImagePath),
+                              _buildImage(party.resultImagePath),
                               Positioned(
                                 bottom: 0,
                                 left: 0,
@@ -110,7 +110,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        cafe.styleName,
+                                        party.styleName,
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,

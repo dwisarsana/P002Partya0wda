@@ -11,8 +11,8 @@ class ParallaxButton extends StatelessWidget {
   const ParallaxButton({
     super.key,
     required this.onTap,
-    this.label = 'Create New Cafe Vision',
-    this.subLabel = 'Powered by Cafe AI',
+    this.label = 'Create New Party Vision',
+    this.subLabel = 'Powered by Party AI',
     this.imagePath = 'assets/images/styles/tropical.png',
   });
 

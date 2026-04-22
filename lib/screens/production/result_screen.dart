@@ -7,12 +7,12 @@ import 'package:http/http.dart' as http;
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../theme/app_theme.dart';
-import '../../models/cafe_style.dart';
+import '../../models/party_style.dart';
 
 class ResultScreen extends StatefulWidget {
   final String originalPath;
   final String resultPath;
-  final CafeStyle style;
+  final PartyStyle style;
   final Map<String, dynamic> settings;
 
   const ResultScreen({
@@ -36,12 +36,12 @@ class _ResultScreenState extends State<ResultScreen> {
     try {
       final response = await http.get(Uri.parse(widget.resultPath));
       final tempDir = await getTemporaryDirectory();
-      final file = await File('${tempDir.path}/cafe_design_${DateTime.now().millisecondsSinceEpoch}.jpg').create();
+      final file = await File('${tempDir.path}/party_design_${DateTime.now().millisecondsSinceEpoch}.jpg').create();
       await file.writeAsBytes(response.bodyBytes);
       
       await Share.shareXFiles(
         [XFile(file.path)], 
-        text: 'Check out my new ${widget.style.name} cafe design created with Cafe AI!',
+        text: 'Check out my new ${widget.style.name} party design created with Party AI!',
       );
     } catch (e) {
       if (mounted) {
@@ -68,7 +68,7 @@ class _ResultScreenState extends State<ResultScreen> {
       final result = await ImageGallerySaver.saveImage(
         response.bodyBytes,
         quality: 100,
-        name: "cafe_ai_${DateTime.now().millisecondsSinceEpoch}",
+        name: "party_ai_${DateTime.now().millisecondsSinceEpoch}",
       );
 
       if (result['isSuccess'] == true) {

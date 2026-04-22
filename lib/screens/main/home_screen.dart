@@ -6,7 +6,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/parallax_button.dart';
 import '../../widgets/glass_container.dart';
 import '../../mock/mock_data.dart';
-import '../../models/cafe_model.dart';
+import '../../models/party_model.dart';
 import '../../services/storage_service.dart';
 import '../account/history_screen.dart';
 import '../account/settings_screen.dart';
@@ -70,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "CAFE AI",
+                              "PARTY AI",
                               style: TextStyle(
                                 color: AppTheme.mossGreen,
                                 fontWeight: FontWeight.w900,
@@ -128,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(32),
                             image: const DecorationImage(
-                              image: AssetImage("assets/images/cafe_hero_dark.jpeg"),
+                              image: AssetImage("assets/images/party_hero_dark.jpeg"),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -219,11 +219,11 @@ class HomeScreen extends StatelessWidget {
               ),
 
               SliverToBoxAdapter(
-                child: FutureBuilder<List<CafeModel>>(
-                  future: context.read<StorageService>().loadCafes(),
+                child: FutureBuilder<List<PartyModel>>(
+                  future: context.read<StorageService>().loadParties(),
                   builder: (context, snapshot) {
-                    final cafes = snapshot.data ?? [];
-                    if (cafes.isEmpty) {
+                    final parties = snapshot.data ?? [];
+                    if (parties.isEmpty) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 24),
                         child: Container(
@@ -234,7 +234,7 @@ class HomeScreen extends StatelessWidget {
                             border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
                           ),
                           child: const Center(
-                            child: Text("Your redesigned cafes will appear here.", style: TextStyle(color: Colors.white38, fontSize: 12)),
+                            child: Text("Your redesigned parties will appear here.", style: TextStyle(color: Colors.white38, fontSize: 12)),
                           ),
                         ),
                       );
@@ -246,11 +246,11 @@ class HomeScreen extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         padding: const EdgeInsets.symmetric(horizontal: 24),
                         physics: const BouncingScrollPhysics(),
-                        itemCount: cafes.length,
+                        itemCount: parties.length,
                         itemBuilder: (context, index) {
-                          final cafe = cafes[index];
+                          final party = parties[index];
                           return _HistoryBentoCard(
-                            cafe: cafe,
+                            party: party,
                             imageBuilder: _buildHistoryImage,
                             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const HistoryScreen())),
                           ).animate().fadeIn(delay: (400 + index * 100).ms);
@@ -358,7 +358,7 @@ class _BentoActionCard extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: color.withValues(alpha: 0.1),
-          borderRadius: BorderRadius.circular(28),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(color: color.withValues(alpha: 0.2)),
         ),
         child: Column(
@@ -382,11 +382,11 @@ class _BentoActionCard extends StatelessWidget {
 }
 
 class _HistoryBentoCard extends StatelessWidget {
-  final CafeModel cafe;
+  final PartyModel party;
   final Widget Function(String) imageBuilder;
   final VoidCallback onTap;
 
-  const _HistoryBentoCard({required this.cafe, required this.imageBuilder, required this.onTap});
+  const _HistoryBentoCard({required this.party, required this.imageBuilder, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -396,15 +396,15 @@ class _HistoryBentoCard extends StatelessWidget {
         width: 150,
         margin: const EdgeInsets.only(right: 16),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: AppTheme.sunGlow.withValues(alpha: 0.3), width: 2),
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(12),
           child: Stack(
             fit: StackFit.expand,
             children: [
-              imageBuilder(cafe.resultImagePath),
+              imageBuilder(party.resultImagePath),
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -419,7 +419,7 @@ class _HistoryBentoCard extends StatelessWidget {
                 left: 12,
                 right: 12,
                 child: Text(
-                  cafe.styleName,
+                  party.styleName,
                   style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -434,7 +434,7 @@ class _HistoryBentoCard extends StatelessWidget {
 }
 
 class _TrendingBentoCard extends StatelessWidget {
-  final dynamic style; // CafeStyle
+  final dynamic style; // PartyStyle
   final VoidCallback onTap;
 
   const _TrendingBentoCard({required this.style, required this.onTap});
@@ -445,7 +445,7 @@ class _TrendingBentoCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(28),
+          borderRadius: BorderRadius.circular(16),
           color: Colors.white.withValues(alpha: 0.05),
           border: Border.all(color: Colors.white.withValues(alpha: 0.05)),
         ),

@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../theme/app_theme.dart';
 import '../../mock/mock_data.dart';
-import '../../models/cafe_style.dart';
+import '../../models/party_style.dart';
 import 'custom_studio_screen.dart';
 
 class StyleLibraryScreen extends StatefulWidget {
@@ -31,7 +31,7 @@ class _StyleLibraryScreenState extends State<StyleLibraryScreen>
     {'name': 'Wild', 'icon': Icons.nature_rounded, 'emoji': '🌿'},
   ];
 
-  List<CafeStyle> get _filteredStyles {
+  List<PartyStyle> get _filteredStyles {
     final category = _categories[_selectedCategoryIndex]['name'] as String;
     var styles = category == 'All'
         ? MockData.styles
@@ -49,7 +49,7 @@ class _StyleLibraryScreenState extends State<StyleLibraryScreen>
     return styles;
   }
 
-  void _showStyleDetail(CafeStyle style) {
+  void _showStyleDetail(PartyStyle style) {
     HapticFeedback.lightImpact();
     showModalBottomSheet(
       context: context,
@@ -169,7 +169,7 @@ class _StyleLibraryScreenState extends State<StyleLibraryScreen>
                 fit: StackFit.expand,
                 children: [
                   Image.asset(
-                    "assets/images/cafe_workflow.jpeg",
+                    "assets/images/party_workflow.jpeg",
                     fit: BoxFit.cover,
                   ),
                   Container(
@@ -364,7 +364,7 @@ class _StyleLibraryScreenState extends State<StyleLibraryScreen>
 }
 
 class _StyleGridCard extends StatelessWidget {
-  final CafeStyle style;
+  final PartyStyle style;
   final bool isFavorite;
   final VoidCallback onTap;
   final VoidCallback onFavorite;
@@ -569,7 +569,7 @@ class _StyleGridCard extends StatelessWidget {
 }
 
 class _StyleListCard extends StatelessWidget {
-  final CafeStyle style;
+  final PartyStyle style;
   final bool isFavorite;
   final VoidCallback onTap;
   final VoidCallback onFavorite;
@@ -710,7 +710,7 @@ class _StyleListCard extends StatelessWidget {
 }
 
 class _StyleDetailSheet extends StatelessWidget {
-  final CafeStyle style;
+  final PartyStyle style;
   final bool isFavorite;
   final VoidCallback onFavorite;
   final VoidCallback onSelect;

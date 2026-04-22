@@ -80,7 +80,7 @@ class GenerationConfig {
 
 /// Builds an optimised Imagen / Replicate prompt from the settings that the
 /// user selected in [CustomStudioScreen].
-class CafePromptBuilder {
+class PartyPromptBuilder {
   static String build({
     required String styleName,
     required Map<String, dynamic> settings,
@@ -95,19 +95,19 @@ class CafePromptBuilder {
 
     // ── Preservation prefix ──────────────────────────────────────────────
     parts.add(
-      'Transform this existing cafe photo while preserving the '
+      'Transform this existing party photo while preserving the '
       'exact same camera angle, perspective, spatial layout, '
       'and surrounding architecture.',
     );
 
     // ── Style ────────────────────────────────────────────────────────────
-    parts.add('Apply a $styleName cafe design style.');
+    parts.add('Apply a $styleName party design style.');
 
     // ── Ambiance ──────────────────────────────────────────────────────────
     final season = settings['season'] as String?;
     if (season != null && season.isNotEmpty) {
       parts.add(
-        'Set the cafe in $season season with appropriate seasonal '
+        'Set the party in $season season with appropriate seasonal '
         'plants, colors, and atmosphere.',
       );
     }
@@ -121,7 +121,7 @@ class CafePromptBuilder {
         : sunlight > 0.3
         ? 'partially shaded, dappled light'
         : 'softly shaded, cool tones';
-    parts.add('Cafe has $lightDesc sunlight conditions.');
+    parts.add('Party has $lightDesc sunlight conditions.');
     final vibrancy = (settings['colorVibrancy'] as num?)?.toDouble() ?? 0.6;
     if (vibrancy > 0.7) {
       parts.add('Bold, vibrant color palette with high saturation.');
@@ -148,7 +148,7 @@ class CafePromptBuilder {
     if (tableSize > 0.6) {
       parts.add('Include large communal tables and spacious group seating.');
     } else if (tableSize > 0.2) {
-      parts.add('Moderate sized tables for typical cafe seating.');
+      parts.add('Moderate sized tables for typical party seating.');
     } else {
       parts.add('Small bistro tables and intimate seating only.');
     }
@@ -156,32 +156,36 @@ class CafePromptBuilder {
     // ── Bar scale ────────────────────────────────────────────────────────
     final barScale = (settings['barScale'] as num?)?.toDouble() ?? 0.5;
     if (barScale > 0.7) {
-      parts.add('Include a grand, prominent espresso bar and counter area.');
+      parts.add('Include a grand, prominent DJ booth and dance floor.');
     } else if (barScale < 0.3) {
-      parts.add('Minimalist, compact espresso counter.');
+      parts.add('Minimalist, compact DJ setup.');
     }
 
     // ── Decor Scale ────────────────────────────────────────────────────────────
     final decorScale = (settings['decorScale'] as num?)?.toDouble() ?? 0.0;
     if (decorScale > 0.4) {
-      parts.add('Include eclectic and prominent cafe decor.');
+      parts.add('Include eclectic and prominent party decor.');
     }
 
     // ── Decor Feature Type ────────────────────────────────────────────────────
     final decorFeatureIdx = (settings['decorFeature'] as num?)?.toInt() ?? -1;
     const decorFeatures = [
-      'Coffee Roaster',
-      'Bookshelves',
-      'Hanging Plants',
-      'Local Art',
-      'Vintage Mirrors',
-      'Record Player',
-      'Chalkboard Menu',
-      'Macrame Wall',
-      'Pastry Display',
-      'Fireplace',
-      'Neon Wall Art',
-      'Bicycles',
+      'DJ Booth',
+      'Laser Lights',
+      'Balloon Arch',
+      'LED Dance Floor',
+      'Disco Ball',
+      'Loudspeakers',
+      'VIP Section',
+      'Fog Machine',
+      'Buffet Table',
+      'Photo Booth',
+      'Neon Signs',
+      'Karaoke Machine',
+      'Strobe Lights',
+      'Confetti Cannon',
+      'Red Carpet',
+      'Glow Sticks',
     ];
     if (decorFeatureIdx >= 0 && decorFeatureIdx < decorFeatures.length) {
       parts.add(
@@ -224,14 +228,14 @@ class CafePromptBuilder {
       'fairy string lights',
     ];
     if (lightingIdx < lightingNames.length) {
-      parts.add('Cafe lighting uses ${lightingNames[lightingIdx]}.');
+      parts.add('Party lighting uses ${lightingNames[lightingIdx]}.');
     }
 
     // ── Quality suffix ───────────────────────────────────────────────────
     parts.add(
-      'Photorealistic result, professional interior cafe photography, '
+      'Photorealistic result, professional interior party photography, '
       'consistent lighting and shadows, high resolution, 8K quality, '
-      'maintaining exact same cafe proportions and surroundings.',
+      'maintaining exact same party proportions and surroundings.',
     );
 
     return parts.join(' ');
@@ -240,8 +244,8 @@ class CafePromptBuilder {
 
 // ── API CLIENT ──────────────────────────────────────────────────────────────
 
-class ReplicateCafeAIService {
-  ReplicateCafeAIService({SafePromptFilter? filter})
+class ReplicatePartyAIService {
+  ReplicatePartyAIService({SafePromptFilter? filter})
     : _filter = filter ?? SafePromptFilter(mode: 'strict');
 
   static const _apiToken = 'API_KEY';
@@ -319,11 +323,11 @@ class ReplicateCafeAIService {
 
 // ── MAIN WRAPPER SERVICE ────────────────────────────────────────────────────
 
-class CafeGenerationService {
-  CafeGenerationService()
-    : _api = ReplicateCafeAIService(filter: SafePromptFilter(mode: 'strict'));
+class PartyGenerationService {
+  PartyGenerationService()
+    : _api = ReplicatePartyAIService(filter: SafePromptFilter(mode: 'strict'));
 
-  final ReplicateCafeAIService _api;
+  final ReplicatePartyAIService _api;
 
   Future<String?> generate({
     required String imagePath,
@@ -332,11 +336,11 @@ class CafeGenerationService {
     GenerationConfig config = const GenerationConfig(),
   }) async {
     final bytes = await File(imagePath).readAsBytes();
-    final prompt = CafePromptBuilder.build(
+    final prompt = PartyPromptBuilder.build(
       styleName: styleName,
       settings: settings,
     );
-    debugPrint('[CafeGeneration] Prompt: $prompt');
+    debugPrint('[PartyGeneration] Prompt: $prompt');
 
     return _api.generateMultiBytes(
       images: [bytes],

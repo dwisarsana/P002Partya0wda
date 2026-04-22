@@ -18,17 +18,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   final List<OnboardingStep> _steps = [
     OnboardingStep(
-      title: "Discover Your\nCafe Style",
+      title: "Discover Your\nParty Style",
       description:
           "From Minimalist Zen to Industrial Chic, explore a library of expert-curated interior themes.",
-      image: 'assets/images/cafe_workflow.jpeg',
+      image: 'assets/images/party_workflow.jpeg',
       icon: Icons.auto_awesome_mosaic_rounded,
     ),
     OnboardingStep(
       title: "Design with\nAI Intelligence",
       description:
           "Upload a photo of your space and watch as our AI creates professional-grade redesigns in seconds.",
-      image: 'assets/images/cafe_hero_dark.jpeg',
+      image: 'assets/images/party_hero_dark.jpeg',
       icon: Icons.bolt_rounded,
     ),
     OnboardingStep(

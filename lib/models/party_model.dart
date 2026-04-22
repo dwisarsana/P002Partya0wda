@@ -1,4 +1,4 @@
-class CafeModel {
+class PartyModel {
   final String id;
   final String originalImagePath;
   final String resultImagePath;
@@ -7,7 +7,7 @@ class CafeModel {
   final Map<String, dynamic> settings;
   final bool isFavorite;
 
-  const CafeModel({
+  const PartyModel({
     required this.id,
     required this.originalImagePath,
     required this.resultImagePath,
@@ -29,8 +29,8 @@ class CafeModel {
     };
   }
 
-  factory CafeModel.fromJson(Map<String, dynamic> json) {
-    return CafeModel(
+  factory PartyModel.fromJson(Map<String, dynamic> json) {
+    return PartyModel(
       id: json['id'],
       originalImagePath: json['originalImagePath'],
       resultImagePath: json['resultImagePath'],

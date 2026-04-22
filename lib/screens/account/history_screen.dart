@@ -4,7 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import '../../theme/app_theme.dart';
 import '../../services/storage_service.dart';
-import '../../models/cafe_model.dart';
+import '../../models/party_model.dart';
 import '../production/result_screen.dart';
 import '../../mock/mock_data.dart';
 
@@ -52,11 +52,11 @@ class HistoryScreen extends StatelessWidget {
               // ── MASONRY-STYLE GALLERY ─────────────────────────────────────
               SliverPadding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 100),
-                sliver: FutureBuilder<List<CafeModel>>(
-                  future: context.read<StorageService>().loadCafes(),
+                sliver: FutureBuilder<List<PartyModel>>(
+                  future: context.read<StorageService>().loadParties(),
                   builder: (context, snapshot) {
-                    final cafes = snapshot.data ?? [];
-                    if (cafes.isEmpty) return _buildEmptyState();
+                    final parties = snapshot.data ?? [];
+                    if (parties.isEmpty) return _buildEmptyState();
 
                     return SliverGrid(
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -67,30 +67,30 @@ class HistoryScreen extends StatelessWidget {
                       ),
                       delegate: SliverChildBuilderDelegate(
                         (context, index) {
-                          final cafe = cafes[index];
+                          final party = parties[index];
                           // Find style object for ResultScreen
                           final style = MockData.styles.firstWhere(
-                            (s) => s.name == cafe.styleName,
+                            (s) => s.name == party.styleName,
                             orElse: () => MockData.styles.first,
                           );
 
                           return _GalleryCard(
-                            cafe: cafe,
+                            party: party,
                             index: index,
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (_) => ResultScreen(
-                                  originalPath: cafe.originalImagePath,
-                                  resultPath: cafe.resultImagePath,
+                                  originalPath: party.originalImagePath,
+                                  resultPath: party.resultImagePath,
                                   style: style,
-                                  settings: cafe.settings,
+                                  settings: party.settings,
                                 ),
                               ),
                             ),
                           ).animate().fadeIn(delay: (index * 100).ms).slideY(begin: 0.2);
                         },
-                        childCount: cafes.length,
+                        childCount: parties.length,
                       ),
                     );
                   },
@@ -114,8 +114,8 @@ class HistoryScreen extends StatelessWidget {
                   BoxShadow(color: Colors.black.withValues(alpha: 0.4), blurRadius: 20, offset: const Offset(0, 10))
                 ],
               ),
-              child: FutureBuilder<List<CafeModel>>(
-                future: context.read<StorageService>().loadCafes(),
+              child: FutureBuilder<List<PartyModel>>(
+                future: context.read<StorageService>().loadParties(),
                 builder: (context, snapshot) {
                   final count = snapshot.data?.length ?? 0;
                   return Row(
@@ -155,11 +155,11 @@ class HistoryScreen extends StatelessWidget {
 }
 
 class _GalleryCard extends StatelessWidget {
-  final CafeModel cafe;
+  final PartyModel party;
   final int index;
   final VoidCallback onTap;
 
-  const _GalleryCard({required this.cafe, required this.index, required this.onTap});
+  const _GalleryCard({required this.party, required this.index, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -180,7 +180,7 @@ class _GalleryCard extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              _buildImage(cafe.resultImagePath),
+              _buildImage(party.resultImagePath),
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -198,12 +198,12 @@ class _GalleryCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      cafe.styleName.toUpperCase(),
+                      party.styleName.toUpperCase(),
                       style: const TextStyle(color: AppTheme.mossGreen, fontSize: 8, fontWeight: FontWeight.w900, letterSpacing: 1),
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      _formatDate(cafe.timestamp),
+                      _formatDate(party.timestamp),
                       style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                   ],
