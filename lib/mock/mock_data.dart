@@ -1,12 +1,12 @@
-import '../models/cafe_style.dart';
-import '../models/cafe_model.dart';
+import '../models/party_style.dart';
+import '../models/party_model.dart';
 
 class MockData {
-  static const List<CafeStyle> styles = [
-    CafeStyle(
+  static const List<PartyStyle> styles = [
+    PartyStyle(
       id: '1',
-      name: 'Industrial Roastery',
-      description: 'Raw, edgy cafe with exposed brick, metal accents, and a large coffee roaster centerpiece.',
+      name: 'Industrial Nightclub',
+      description: 'Raw, edgy party with exposed brick, metal accents, and a large music roaster centerpiece.',
       imagePath: 'assets/images/styles/industrial_roastery.jpeg',
       category: 'Industrial',
       tags: ['Raw', 'Edgy', 'Exposed'],
@@ -14,12 +14,12 @@ class MockData {
       difficulty: 'Hard',
       estimatedTime: '2-4 weeks',
       keyFeatures: ['Exposed brick walls', 'Metal piping', 'Edison bulbs', 'Concrete floors'],
-      moodDescription: 'Urban coffee warehouse vibes',
+      moodDescription: 'Urban music warehouse vibes',
     ),
-    CafeStyle(
+    PartyStyle(
       id: '2',
-      name: 'Vintage Bakery Cafe',
-      description: 'Charming, nostalgic cafe with antique wooden furniture, floral wallpapers, and a classic pastry display.',
+      name: 'Vintage Disco Party',
+      description: 'Charming, nostalgic party with antique wooden furniture, floral wallpapers, and a classic pastry display.',
       imagePath: 'assets/images/styles/vintage_bakery.jpeg',
       category: 'Classic',
       tags: ['Nostalgic', 'Charming', 'Antique'],
@@ -29,10 +29,10 @@ class MockData {
       keyFeatures: ['Antique wood tables', 'Floral wallpaper', 'Classic espresso machine', 'Pastry vitrine'],
       moodDescription: 'Step back into a classic era',
     ),
-    CafeStyle(
+    PartyStyle(
       id: '3',
-      name: 'Minimalist Coffee Bar',
-      description: 'Sleek, uncluttered space focusing purely on the coffee, with clean white lines and hidden equipment.',
+      name: 'Minimalist Dance Floor',
+      description: 'Sleek, uncluttered space focusing purely on the music, with clean white lines and hidden equipment.',
       imagePath: 'assets/images/styles/minimalist_bar.jpeg',
       category: 'Minimalist',
       tags: ['Clean', 'Sleek', 'Pure'],
@@ -40,12 +40,12 @@ class MockData {
       difficulty: 'Medium',
       estimatedTime: '2-3 weeks',
       keyFeatures: ['Under-counter espresso', 'White Corian surfaces', 'Hidden storage', 'Minimal seating'],
-      moodDescription: 'Pure focus on the brew',
+      moodDescription: 'Pure focus on the beat',
     ),
-    CafeStyle(
+    PartyStyle(
       id: '4',
-      name: 'Botanical Oasis Cafe',
-      description: 'A cafe that feels like a greenhouse, overflowing with hanging plants, terrariums, and natural light.',
+      name: 'Botanical Oasis Party',
+      description: 'A party that feels like a greenhouse, overflowing with hanging plants, terrariums, and natural light.',
       imagePath: 'assets/images/styles/botanical_oasis.jpeg',
       category: 'Nature',
       tags: ['Green', 'Lush', 'Bright'],
@@ -53,24 +53,24 @@ class MockData {
       difficulty: 'Hard',
       estimatedTime: '3-4 weeks',
       keyFeatures: ['Hanging ivy', 'Large skylights', 'Rattan furniture', 'Living green walls'],
-      moodDescription: 'Sip coffee in a lush jungle',
+      moodDescription: 'Sip music in a lush jungle',
     ),
-    CafeStyle(
+    PartyStyle(
       id: '5',
-      name: 'Cozy Book Cafe',
-      description: 'Warm and inviting cafe lined with bookshelves, plush armchairs, and reading lamps.',
-      imagePath: 'assets/images/styles/book_cafe_library.jpeg',
+      name: 'Cozy Book Party',
+      description: 'Warm and inviting party lined with bookshelves, plush armchairs, and reading lamps.',
+      imagePath: 'assets/images/styles/book_party_library.jpeg',
       category: 'Cozy',
       tags: ['Quiet', 'Warm', 'Intellectual'],
       popularity: 4.5,
       difficulty: 'Medium',
       estimatedTime: '2-3 weeks',
       keyFeatures: ['Floor-to-ceiling bookshelves', 'Plush armchairs', 'Library lamps', 'Fireplace'],
-      moodDescription: 'Get lost in a book and a brew',
+      moodDescription: 'Get lost in a book and a beat',
     ),
-    CafeStyle(
+    PartyStyle(
       id: '6',
-      name: 'Parisian Bistro Cafe',
+      name: 'Parisian Bistro Party',
       description: 'Classic French style with marble round tables, woven chairs, and a zinc bar counter.',
       imagePath: 'assets/images/styles/paris_bistro.jpeg',
       category: 'Classic',
@@ -81,23 +81,23 @@ class MockData {
       keyFeatures: ['Marble bistro tables', 'Woven rattan chairs', 'Zinc bar', 'Awning windows'],
       moodDescription: 'A slice of Paris',
     ),
-    CafeStyle(
+    PartyStyle(
       id: '7',
-      name: 'Cyberpunk Cyber Cafe',
-      description: 'Neon-lit, futuristic cafe with dark interiors, LED strips, and high-tech brewing equipment.',
-      imagePath: 'assets/images/styles/cyber_cafe.jpeg',
+      name: 'Cyberpunk Cyber Party',
+      description: 'Neon-lit, futuristic party with dark interiors, LED strips, and high-tech beating equipment.',
+      imagePath: 'assets/images/styles/cyber_party.jpeg',
       category: 'Modern',
       tags: ['Futuristic', 'Neon', 'Tech'],
       popularity: 4.3,
       difficulty: 'Hard',
       estimatedTime: '4-6 weeks',
-      keyFeatures: ['Neon lighting', 'Dark metal finishes', 'Automated brewers', 'Digital menus'],
+      keyFeatures: ['Neon lighting', 'Dark metal finishes', 'Automated beaters', 'Digital menus'],
       moodDescription: 'Coffee from the future',
     ),
-    CafeStyle(
+    PartyStyle(
       id: '8',
-      name: 'Rustic Farmhouse Cafe',
-      description: 'Warm and wholesome cafe using reclaimed wood, barn doors, and farmhouse sinks.',
+      name: 'Rustic Farmhouse Party',
+      description: 'Warm and wholesome party using reclaimed wood, barn doors, and farmhouse sinks.',
       imagePath: 'assets/images/styles/rustic_farmhouse.jpeg',
       category: 'Rustic',
       tags: ['Wholesome', 'Warm', 'Reclaimed'],
@@ -107,10 +107,10 @@ class MockData {
       keyFeatures: ['Reclaimed wood', 'Sliding barn doors', 'Mason jar glasses', 'Farmhouse sink'],
       moodDescription: 'Country warmth in the city',
     ),
-    CafeStyle(
+    PartyStyle(
       id: '9',
-      name: 'Art Deco Coffee Lounge',
-      description: 'Glamorous cafe with geometric patterns, gold brass accents, and velvet booth seating.',
+      name: 'Art Deco Party Lounge',
+      description: 'Glamorous party with geometric patterns, gold brass accents, and velvet booth seating.',
       imagePath: 'assets/images/styles/art_deco_lounge.jpeg',
       category: 'Glamour',
       tags: ['Luxurious', 'Geometric', 'Gold'],
@@ -120,9 +120,9 @@ class MockData {
       keyFeatures: ['Geometric tiles', 'Brass fixtures', 'Velvet booths', 'Mirrored walls'],
       moodDescription: 'Roaring twenties glamour',
     ),
-    CafeStyle(
+    PartyStyle(
       id: '10',
-      name: 'Scandinavian Hygge Cafe',
+      name: 'Scandinavian Hygge Party',
       description: 'Light wood, soft textiles, and a muted color palette creating a deeply comforting atmosphere.',
       imagePath: 'assets/images/styles/scandi_hygge.jpeg',
       category: 'Minimalist',
@@ -133,10 +133,10 @@ class MockData {
       keyFeatures: ['Light ash wood', 'Soft woolen throws', 'Muted colors', 'Ceramic mugs'],
       moodDescription: 'Ultimate comfort and warmth',
     ),
-    CafeStyle(
+    PartyStyle(
       id: '11',
-      name: 'Bohemian Surf Cafe',
-      description: 'Relaxed, beachy cafe with macrame wall hangings, colorful rugs, and a laid-back vibe.',
+      name: 'Bohemian Surf Party',
+      description: 'Relaxed, beachy party with macrame wall hangings, colorful rugs, and a laid-back vibe.',
       imagePath: 'assets/images/styles/boho_surf.jpeg',
       category: 'Boho',
       tags: ['Relaxed', 'Colorful', 'Beachy'],
@@ -146,10 +146,10 @@ class MockData {
       keyFeatures: ['Macrame hangings', 'Vintage rugs', 'Low seating', 'Surfboard decor'],
       moodDescription: 'Chill beachside vibes',
     ),
-    CafeStyle(
+    PartyStyle(
       id: '12',
-      name: 'Southwestern Adobe Cafe',
-      description: 'Warm, earthy cafe with terracotta colors, cactus decor, and rustic woven textiles.',
+      name: 'Southwestern Adobe Party',
+      description: 'Warm, earthy party with terracotta colors, cactus decor, and rustic woven textiles.',
       imagePath: 'assets/images/styles/adobe_southwest.jpeg',
       category: 'Rustic',
       tags: ['Earthy', 'Warm', 'Terracotta'],
@@ -189,7 +189,7 @@ class MockData {
     {'name': 'Painted Wood', 'icon': '🎨'},
   ];
 
-  static const List<Map<String, dynamic>> cafeLightingOptions = [
+  static const List<Map<String, dynamic>> partyLightingOptions = [
     {'name': 'Edison Pendants', 'icon': '💡', 'temp': '2700K'},
     {'name': 'Track Lighting', 'icon': '🔦', 'temp': '4000K'},
     {'name': 'Neon Signs', 'icon': '⚡', 'temp': 'Various'},
@@ -202,21 +202,25 @@ class MockData {
     {'name': 'Fairy Strings', 'icon': '🌟', 'temp': '2200K'},
   ];
 
-  static const List<Map<String, dynamic>> decorOptions = [
-    {'name': 'Coffee Roaster', 'icon': '🔥'},
-    {'name': 'Bookshelves', 'icon': '📚'},
-    {'name': 'Hanging Plants', 'icon': '🌿'},
-    {'name': 'Local Art', 'icon': '🖼️'},
-    {'name': 'Vintage Mirrors', 'icon': '🪞'},
-    {'name': 'Record Player', 'icon': '🎵'},
-    {'name': 'Chalkboard Menu', 'icon': '📝'},
-    {'name': 'Macrame Wall', 'icon': '🧶'},
-    {'name': 'Pastry Display', 'icon': '🥐'},
-    {'name': 'Fireplace', 'icon': '🪵'},
-    {'name': 'Neon Wall Art', 'icon': '💕'},
-    {'name': 'Bicycles', 'icon': '🚲'},
+    static const List<Map<String, dynamic>> decorOptions = [
+    {'name': 'DJ Booth', 'icon': '🎧'},
+    {'name': 'Laser Lights', 'icon': '✨'},
+    {'name': 'Balloon Arch', 'icon': '🎈'},
+    {'name': 'LED Dance Floor', 'icon': '🕺'},
+    {'name': 'Disco Ball', 'icon': '🪩'},
+    {'name': 'Loudspeakers', 'icon': '🔊'},
+    {'name': 'VIP Section', 'icon': '🍾'},
+    {'name': 'Fog Machine', 'icon': '💨'},
+    {'name': 'Buffet Table', 'icon': '🍽️'},
+    {'name': 'Photo Booth', 'icon': '📸'},
+    {'name': 'Neon Signs', 'icon': '⚡'},
+    {'name': 'Karaoke Machine', 'icon': '🎤'},
+    {'name': 'Strobe Lights', 'icon': '💡'},
+    {'name': 'Confetti Cannon', 'icon': '🎉'},
+    {'name': 'Red Carpet', 'icon': '🟥'},
+    {'name': 'Glow Sticks', 'icon': '✨'},
   ];
 
   // Empty initial history — real history comes from storage
-  static List<CafeModel> get initialHistory => [];
+  static List<PartyModel> get initialHistory => [];
 }

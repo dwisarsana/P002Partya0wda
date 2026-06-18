@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/cafe_model.dart';
-import '../../models/cafe_style.dart';
-import '../../services/cafe_generation_service.dart';
+import '../../models/party_model.dart';
+import '../../models/party_style.dart';
+import '../../services/party_generation_service.dart';
 import '../../services/storage_service.dart';
 import '../../theme/app_theme.dart';
 import 'result_screen.dart';
@@ -13,7 +13,7 @@ import '../../src/constant.dart';
 
 class GeneratingScreen extends StatefulWidget {
   final String imagePath;
-  final CafeStyle style;
+  final PartyStyle style;
   final Map<String, dynamic> settings;
 
   const GeneratingScreen({
@@ -30,9 +30,9 @@ class GeneratingScreen extends StatefulWidget {
 class _GeneratingScreenState extends State<GeneratingScreen>
     with TickerProviderStateMixin {
   late final AnimationController _rotateCtrl;
-  final _service = CafeGenerationService();
+  final _service = PartyGenerationService();
 
-  String _statusMessage = 'Analyzing your cafe...';
+  String _statusMessage = 'Analyzing your party...';
   double _progress = 0.0;
   bool _hasError = false;
   String _errorMsg = '';
@@ -126,8 +126,8 @@ class _GeneratingScreenState extends State<GeneratingScreen>
   Future<void> _saveToHistory(String resultUrl) async {
     try {
       final storage = context.read<StorageService>();
-      final current = await storage.loadCafes();
-      final cafe = CafeModel(
+      final current = await storage.loadParties();
+      final party = PartyModel(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         originalImagePath: widget.imagePath,
         resultImagePath: resultUrl,
@@ -135,7 +135,7 @@ class _GeneratingScreenState extends State<GeneratingScreen>
         timestamp: DateTime.now(),
         settings: widget.settings,
       );
-      await storage.saveCafes([cafe, ...current]);
+      await storage.saveParties([party, ...current]);
       // Statistics updated within consumeQuotaOrToken()
     } catch (_) {}
   }

@@ -11,18 +11,18 @@ void main() async {
   // Initialize Premium & Token services
   await initRevenueCat();
 
-  runApp(const CafeAIApp());
+  runApp(const PartyAIApp());
 }
 
-class CafeAIApp extends StatelessWidget {
-  const CafeAIApp({super.key});
+class PartyAIApp extends StatelessWidget {
+  const PartyAIApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [Provider<StorageService>(create: (_) => StorageService())],
       child: MaterialApp(
-        title: 'Cafe AI',
+        title: 'Party AI',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
         home: const SplashScreen(),

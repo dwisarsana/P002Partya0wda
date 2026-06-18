@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CafeStyle {
+class PartyStyle {
   final String id;
   final String name;
   final String description;
@@ -14,7 +14,7 @@ class CafeStyle {
   final String moodDescription;
   final Color? accentColor;
 
-  const CafeStyle({
+  const PartyStyle({
     required this.id,
     required this.name,
     required this.description,

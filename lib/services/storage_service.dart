@@ -1,33 +1,33 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../models/cafe_model.dart';
+import '../models/party_model.dart';
 
 class StorageService {
-  static const String _historyKey = 'cafe_history';
+  static const String _historyKey = 'party_history';
 
-  Future<void> saveCafes(List<CafeModel> cafes) async {
+  Future<void> saveParties(List<PartyModel> parties) async {
     final prefs = await SharedPreferences.getInstance();
-    final List<String> jsonList = cafes.map((g) => jsonEncode(g.toJson())).toList();
+    final List<String> jsonList = parties.map((g) => jsonEncode(g.toJson())).toList();
     await prefs.setStringList(_historyKey, jsonList);
   }
 
-  Future<List<CafeModel>> loadCafes() async {
+  Future<List<PartyModel>> loadParties() async {
     final prefs = await SharedPreferences.getInstance();
     final List<String>? jsonList = prefs.getStringList(_historyKey);
     
     if (jsonList == null) return [];
 
     return jsonList.map((jsonStr) {
-      return CafeModel.fromJson(jsonDecode(jsonStr));
+      return PartyModel.fromJson(jsonDecode(jsonStr));
     }).toList();
   }
 
   Future<void> toggleFavorite(String id) async {
-    final cafes = await loadCafes();
-    final index = cafes.indexWhere((g) => g.id == id);
+    final parties = await loadParties();
+    final index = parties.indexWhere((g) => g.id == id);
     if (index != -1) {
-      final g = cafes[index];
-      cafes[index] = CafeModel(
+      final g = parties[index];
+      parties[index] = PartyModel(
         id: g.id,
         originalImagePath: g.originalImagePath,
         resultImagePath: g.resultImagePath,
@@ -36,7 +36,7 @@ class StorageService {
         settings: g.settings,
         isFavorite: !g.isFavorite,
       );
-      await saveCafes(cafes);
+      await saveParties(parties);
     }
   }
 

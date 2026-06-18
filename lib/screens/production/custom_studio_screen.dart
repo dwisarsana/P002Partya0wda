@@ -5,13 +5,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../theme/app_theme.dart';
 import '../../mock/mock_data.dart';
-import '../../models/cafe_style.dart';
+import '../../models/party_style.dart';
 import 'generating_screen.dart';
 import '../../src/constant.dart';
 
 class CustomStudioScreen extends StatefulWidget {
   final String imagePath;
-  final CafeStyle selectedStyle;
+  final PartyStyle selectedStyle;
 
   const CustomStudioScreen({
     super.key,
@@ -77,10 +77,10 @@ class _CustomStudioScreenState extends State<CustomStudioScreen>
   // logic to build a dynamic prompt
   void _updatePrompt() {
     String flooring = MockData.flooringOptions[_selectedFlooring]['name'];
-    String lighting = MockData.cafeLightingOptions[_selectedLighting]['name'];
+    String lighting = MockData.partyLightingOptions[_selectedLighting]['name'];
     String decor = _selectedDecorFeature != -1 ? MockData.decorOptions[_selectedDecorFeature]['name'] : "standard decor";
     
-    String prompt = "Professional interior design of a ${widget.selectedStyle.name} cafe. "
+    String prompt = "Professional interior design of a ${widget.selectedStyle.name} party. "
         "The space features $flooring flooring and is illuminated by $lighting. "
         "Furniture includes ${(_density > 0.6) ? 'dense' : 'minimal'} seating with ${(_tableSize > 0.6) ? 'large communal' : 'intimate'} tables. "
         "Ambiance is set for $_season during $_timeOfDay. Highlight $decor as key feature. "
@@ -414,7 +414,7 @@ class _CustomStudioScreenState extends State<CustomStudioScreen>
           _SliderCard(
             label: 'Bar Scale',
             value: _barScale,
-            icon: Icons.local_cafe_rounded,
+            icon: Icons.celebration_rounded,
             color: AppTheme.skyBlue,
             onChanged: (v) {
               setState(() => _barScale = v);
@@ -459,11 +459,11 @@ class _CustomStudioScreenState extends State<CustomStudioScreen>
             height: 90,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: MockData.cafeLightingOptions.length,
+              itemCount: MockData.partyLightingOptions.length,
               itemBuilder: (context, index) {
                 return _SquareSelectableIcon(
-                  label: MockData.cafeLightingOptions[index]['name'],
-                  icon: MockData.cafeLightingOptions[index]['icon'],
+                  label: MockData.partyLightingOptions[index]['name'],
+                  icon: MockData.partyLightingOptions[index]['icon'],
                   isSelected: _selectedLighting == index,
                   onTap: () {
                     setState(() => _selectedLighting = index);

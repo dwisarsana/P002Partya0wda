@@ -1,4 +1,4 @@
-// Cafe AI — Splash Screen (Enhanced UI)
+// Party AI — Splash Screen (Enhanced UI)
 
 import 'dart:async';
 import 'dart:math' as math;
@@ -19,7 +19,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
-  String _loadingText = 'Starting Cafe AI...';
+  String _loadingText = 'Starting Party AI...';
   int _loadingStep = 0;
 
   late final AnimationController _logoScale;
@@ -32,9 +32,9 @@ class _SplashScreenState extends State<SplashScreen>
   late final Animation<double> _progressAnimation;
 
   static const _loadingSteps = [
-    'Analyzing cafe layout...',
-    'Preparing cafe styles...',
-    'Loading AI cafe models...',
+    'Analyzing party layout...',
+    'Preparing party styles...',
+    'Loading AI party models...',
     'Setting up your sanctuary...',
     'Almost ready...',
   ];
@@ -153,7 +153,7 @@ class _SplashScreenState extends State<SplashScreen>
               builder: (_, __) => CustomPaint(
                 painter: _MultiGlowPainter(
                   progress: _shimmer.value,
-                  color: AppTheme.mossGreen,
+                  color: AppTheme.sunGlow,
                 ),
               ),
             ),
@@ -166,7 +166,7 @@ class _SplashScreenState extends State<SplashScreen>
               builder: (_, __) => CustomPaint(
                 painter: _ParticlePainter(
                   progress: _particleCtrl.value,
-                  color: AppTheme.mossGreen,
+                  color: AppTheme.sunGlow,
                 ),
               ),
             ),
@@ -201,7 +201,7 @@ class _SplashScreenState extends State<SplashScreen>
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
-                              color: AppTheme.mossGreen.withValues(
+                              color: AppTheme.sunGlow.withValues(
                                 alpha:
                                     0.06 +
                                     math
@@ -223,7 +223,7 @@ class _SplashScreenState extends State<SplashScreen>
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
-                              color: AppTheme.mossGreen.withValues(
+                              color: AppTheme.sunGlow.withValues(
                                 alpha:
                                     0.12 +
                                     math
@@ -244,14 +244,14 @@ class _SplashScreenState extends State<SplashScreen>
                           borderRadius: BorderRadius.circular(26),
                           boxShadow: [
                             BoxShadow(
-                              color: AppTheme.mossGreen.withValues(
+                              color: AppTheme.sunGlow.withValues(
                                 alpha: 0.4,
                               ),
                               blurRadius: 60,
                               spreadRadius: 4,
                             ),
                             BoxShadow(
-                              color: AppTheme.mossGreen.withValues(
+                              color: AppTheme.sunGlow.withValues(
                                 alpha: 0.15,
                               ),
                               blurRadius: 120,
@@ -259,7 +259,7 @@ class _SplashScreenState extends State<SplashScreen>
                             ),
                           ],
                           border: Border.all(
-                            color: AppTheme.mossGreen.withValues(
+                            color: AppTheme.sunGlow.withValues(
                               alpha: 0.3,
                             ),
                             width: 1.5,
@@ -284,13 +284,13 @@ class _SplashScreenState extends State<SplashScreen>
                   opacity: _fadeAnimation,
                   child: Column(
                     children: [
-                      // "CAFE" in white, "AI" in accent — editorial split
+                      // "PARTY" in white, "AI" in accent — editorial split
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           const Text(
-                            'CAFE',
+                            'PARTY',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 34,
@@ -306,7 +306,7 @@ class _SplashScreenState extends State<SplashScreen>
                               vertical: 3,
                             ),
                             decoration: BoxDecoration(
-                              color: AppTheme.mossGreen,
+                              color: AppTheme.sunGlow,
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: const Text(
@@ -337,7 +337,7 @@ class _SplashScreenState extends State<SplashScreen>
                             width: 4,
                             height: 4,
                             decoration: BoxDecoration(
-                              color: AppTheme.mossGreen,
+                              color: AppTheme.sunGlow,
                               shape: BoxShape.circle,
                             ),
                           ),
@@ -351,9 +351,9 @@ class _SplashScreenState extends State<SplashScreen>
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        'INTELLIGENT CAFE DESIGN',
+                        'INTELLIGENT PARTY DESIGN',
                         style: TextStyle(
-                          color: AppTheme.mossGreen.withValues(
+                          color: AppTheme.sunGlow.withValues(
                             alpha: 0.7,
                           ),
                           fontSize: 11,

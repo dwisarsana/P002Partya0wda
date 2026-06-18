@@ -1,4 +1,4 @@
-// RevenueCat + helper premium for Cafe AI (iOS + Android ready)
+// RevenueCat + helper premium for Party AI (iOS + Android ready)
 
 import 'dart:async';
 import 'dart:io';
@@ -19,12 +19,12 @@ const amazonApiKey = 'amazon_api_key'; // Android (Amazon)
 const appleApiKey = 'appl_KEWWHMhhILmVXtUgAYxPqCiwpbB'; // iOS
 
 const appId =
-    'app.cafe.ai'; // Cafe AI identifier
+    'app.party.ai'; // Party AI identifier
 
-const entitlementKey = 'cafe'; // Generic entitlement key
+const entitlementKey = 'party'; // Generic entitlement key
 const int kPremiumDailyLimit = 10;
 
-const tokenPack5Id = 'ai.cafe.token5';
+const tokenPack5Id = 'ai.party.token5';
 const String kToken5ProductId = tokenPack5Id;
 
 const String kPrivacyPolicyUrl = 'https://appsbylily.com/privacy.html';
@@ -40,7 +40,7 @@ ValueListenable<int> get tokenBalanceListenable => _tokenBalance;
 StreamSubscription<int>? _tokenSubscription;
 
 // =================== TOTAL GENERATION COUNT ===================
-const String _kTotalGenerationKey = 'cafe_ai_total_generations';
+const String _kTotalGenerationKey = 'party_ai_total_generations';
 
 Future<int> getTotalGenerationCount() async {
   final prefs = await SharedPreferences.getInstance();
@@ -54,7 +54,7 @@ Future<void> incrementTotalGenerationCount() async {
 }
 
 // =================== DEVELOPER MODE (Debug Only) ===================
-const String _kDevModeKey = 'cafe_developer_mode_enabled';
+const String _kDevModeKey = 'party_developer_mode_enabled';
 bool _devModeEnabled = false;
 
 /// Check if developer mode is enabled (bypasses premium checks for testing)
@@ -123,7 +123,7 @@ Future<void> debugSetFreeUser() async {
 bool _paywallShowing = false;
 const _justPurchasedKey = 'just_purchased_ms';
 const _suppressMinutesAfterPurchase = 10;
-const _kPremiumDailyKeyPrefix = 'cafe_ai_premium_daily_';
+const _kPremiumDailyKeyPrefix = 'party_ai_premium_daily_';
 
 // =================== INIT ===================
 Future<void> initRevenueCat() async {
@@ -199,11 +199,11 @@ Future<bool> presentPaywallGuarded(
   _paywallShowing = true;
 
   try {
-    debugPrint('🟢 Opening Cafe AI paywall (forceLoading: $forceLoading)...');
+    debugPrint('🟢 Opening Party AI paywall (forceLoading: $forceLoading)...');
     await Navigator.of(context).push(
       MaterialPageRoute(
         fullscreenDialog: true,
-        builder: (_) => CafeAIPaywall(forceLoading: forceLoading),
+        builder: (_) => PartyAIPaywall(forceLoading: forceLoading),
       ),
     );
 

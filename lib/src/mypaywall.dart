@@ -1,5 +1,5 @@
 // lib/src/mypaywall.dart
-// Cafe AI — Premium Paywall Screen
+// Party AI — Premium Paywall Screen
 
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
@@ -16,15 +16,15 @@ import 'constant.dart'
         kPrivacyPolicyUrl,
         kTermsOfUseUrl;
 
-class CafeAIPaywall extends StatefulWidget {
+class PartyAIPaywall extends StatefulWidget {
   final bool forceLoading;
-  const CafeAIPaywall({super.key, this.forceLoading = false});
+  const PartyAIPaywall({super.key, this.forceLoading = false});
 
   @override
-  State<CafeAIPaywall> createState() => _CafeAIPaywallState();
+  State<PartyAIPaywall> createState() => _PartyAIPaywallState();
 }
 
-class _CafeAIPaywallState extends State<CafeAIPaywall>
+class _PartyAIPaywallState extends State<PartyAIPaywall>
     with SingleTickerProviderStateMixin {
   Offerings? _offerings;
   StoreProduct? _token5;
@@ -123,7 +123,7 @@ class _CafeAIPaywallState extends State<CafeAIPaywall>
       if (isPro) {
         if (Navigator.canPop(context)) Navigator.pop(context);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Welcome to Cafe AI Premium!')),
+          const SnackBar(content: Text('Welcome to Party AI Premium!')),
         );
       }
     } catch (e) {
@@ -322,14 +322,14 @@ class _CafeAIPaywallState extends State<CafeAIPaywall>
               ),
             ),
             child: const Icon(
-              Icons.local_cafe_rounded,
+              Icons.celebration_rounded,
               size: 40,
               color: AppTheme.mossGreen,
             ),
           ),
           const SizedBox(height: 24),
           const Text(
-            'Cafe AI Premium',
+            'Party AI Premium',
             style: TextStyle(
               color: Colors.white,
               fontSize: 26,
@@ -339,17 +339,17 @@ class _CafeAIPaywallState extends State<CafeAIPaywall>
           ),
           const SizedBox(height: 8),
           const Text(
-            'Transform your cafe with unlimited AI power and exclusive designs.',
+            'Transform your party with unlimited AI power and exclusive designs.',
             style: TextStyle(color: Colors.white60, fontSize: 15),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 40),
 
           _sectionTitle('Premium Features'),
-          _feature(CupertinoIcons.infinite, 'Unlimited Cafe generations'),
+          _feature(CupertinoIcons.infinite, 'Unlimited Party generations'),
           _feature(
             CupertinoIcons.paintbrush,
-            'Access all 100+ Premium cafe styles',
+            'Access all 100+ Premium party styles',
           ),
           _feature(CupertinoIcons.photo_fill, 'High-resolution 4K exports'),
           _feature(CupertinoIcons.bolt_fill, 'Priority AI Rendering'),
